@@ -99,11 +99,16 @@ export function Hero() {
           </VStack>
         </MotionBox>
 
-        {/* Scroll indicator */}
-        <MotionBox position="absolute" bottom={10} left="50%" transform="translateX(-50%)" animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-          <Link href="#experience" color="gray.500" _hover={{ color: 'purple.400' }}><FaChevronDown size={24} /></Link>
-        </MotionBox>
       </Container>
+
+      {/* Scroll indicator */}
+      <Box position="absolute" bottom={8} left={0} right={0} display="flex" justifyContent="center" zIndex={2}>
+        <MotionBox animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+          <Link href="#experience" color="gray.500" _hover={{ color: 'purple.400', textDecoration: 'none' }}>
+            <FaChevronDown size={24} />
+          </Link>
+        </MotionBox>
+      </Box>
     </Box>
   );
 }
