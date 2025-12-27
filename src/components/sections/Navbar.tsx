@@ -5,6 +5,7 @@ import { FaTerminal } from 'react-icons/fa';
 import { personalInfo } from '../../data';
 
 const MotionBox = motion.create(Box);
+const MotionSpan = motion.create('span');
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -82,7 +83,7 @@ export function Navbar() {
           </Link>
 
           {/* Nav Links - Desktop */}
-          <HStack gap={2} display={{ base: 'none', md: 'flex' }}>
+          <HStack gap={1} display={{ base: 'none', md: 'flex' }}>
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -90,20 +91,38 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
+                  position="relative"
                   color={isActive ? 'white' : 'gray.400'}
                   fontSize="sm"
                   fontWeight="medium"
                   px={3}
                   py={1.5}
-                  borderRadius="full"
-                  bg={isActive ? 'rgba(102, 126, 234, 0.3)' : 'transparent'}
+                  zIndex={1}
                   _hover={{
                     color: 'white',
-                    bg: isActive ? 'rgba(102, 126, 234, 0.3)' : 'rgba(102, 126, 234, 0.15)',
                     textDecoration: 'none',
                   }}
-                  transition="all 0.2s ease"
+                  _focus={{ outline: 'none', boxShadow: 'none' }}
+                  _focusVisible={{ outline: 'none', boxShadow: 'none' }}
+                  transition="color 0.2s ease"
                 >
+                  {isActive && (
+                    <MotionSpan
+                      layoutId="navPill"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'rgba(102, 126, 234, 0.3)',
+                        borderRadius: '9999px',
+                        zIndex: -1,
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
                   {link.name}
                 </Link>
               );
