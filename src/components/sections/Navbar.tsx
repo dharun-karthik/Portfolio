@@ -1,5 +1,5 @@
-import { Box, Container, HStack, Link, Text } from '@chakra-ui/react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { Box, HStack, Link, Text } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { FaTerminal } from 'react-icons/fa';
 import { personalInfo } from '../../data';
 
@@ -14,9 +14,6 @@ const navLinks = [
 ];
 
 export function Navbar() {
-  const { scrollY } = useScroll();
-  const bgOpacity = useTransform(scrollY, [0, 100], [0, 0.95]);
-  const blur = useTransform(scrollY, [0, 100], [0, 10]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -27,20 +24,24 @@ export function Navbar() {
   };
 
   return (
-    <MotionBox
+    <Box
       as="nav"
       position="fixed"
-      top={0}
-      left={0}
-      right={0}
+      top={4}
+      left="50%"
+      transform="translateX(-50%)"
       zIndex={1000}
-      py={4}
-      style={{
-        backgroundColor: `rgba(10, 10, 20, ${bgOpacity})`,
-        backdropFilter: `blur(${blur}px)`,
-      }}
+      w={{ base: '95%', md: '90%' }}
+      maxW="5xl"
     >
-      <Container maxW="5xl" mx="auto" px={{ base: 6, md: 8 }}>
+      <MotionBox
+        px={{ base: 4, md: 6 }}
+        py={3}
+        bg="rgba(15, 15, 25, 0.7)"
+        backdropFilter="blur(20px)"
+        borderRadius="full"
+        boxShadow="0 8px 32px rgba(0, 0, 0, 0.3)"
+      >
         <HStack justify="space-between">
           {/* Logo */}
           <Link
@@ -59,7 +60,7 @@ export function Navbar() {
           </Link>
 
           {/* Nav Links - Desktop */}
-          <HStack gap={8} display={{ base: 'none', md: 'flex' }}>
+          <HStack gap={2} display={{ base: 'none', md: 'flex' }}>
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -68,8 +69,15 @@ export function Navbar() {
                 color="gray.400"
                 fontSize="sm"
                 fontWeight="medium"
-                _hover={{ color: 'white' }}
-                transition="color 0.2s"
+                px={3}
+                py={1.5}
+                borderRadius="full"
+                _hover={{
+                  color: 'white',
+                  bg: 'rgba(102, 126, 234, 0.15)',
+                  textDecoration: 'none',
+                }}
+                transition="all 0.2s ease"
               >
                 {link.name}
               </Link>
@@ -94,8 +102,8 @@ export function Navbar() {
             Hire Me
           </Box>
         </HStack>
-      </Container>
-    </MotionBox>
+      </MotionBox>
+    </Box>
   );
 }
 
