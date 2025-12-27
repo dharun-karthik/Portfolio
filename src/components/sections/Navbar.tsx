@@ -130,8 +130,7 @@ export function Navbar() {
           </HStack>
 
           {/* CTA Button */}
-          <Box
-            as="a"
+          <Link
             href={`mailto:${personalInfo.contact.email}`}
             px={5}
             py={2}
@@ -142,10 +141,10 @@ export function Navbar() {
             fontWeight="semibold"
             cursor="pointer"
             transition="all 0.3s"
-            _hover={{ transform: 'translateY(-2px)', boxShadow: '0 10px 20px rgba(102,126,234,0.3)' }}
+            _hover={{ transform: 'translateY(-2px)', boxShadow: '0 10px 20px rgba(102,126,234,0.3)', textDecoration: 'none' }}
           >
             Hire Me
-          </Box>
+          </Link>
         </HStack>
       </MotionBox>
     </Box>

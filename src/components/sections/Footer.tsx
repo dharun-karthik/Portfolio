@@ -77,8 +77,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.5 }}
             textAlign="center"
           >
-            <Box
-              as="a"
+            <Link
               href={`https://wa.me/${personalInfo.contact.whatsapp}`}
               target="_blank"
               display="inline-flex"
@@ -93,10 +92,10 @@ export function Footer() {
               fontSize="lg"
               cursor="pointer"
               transition="all 0.3s"
-              _hover={{ transform: 'translateY(-3px)', boxShadow: '0 20px 40px rgba(37,211,102,0.4)' }}
+              _hover={{ transform: 'translateY(-3px)', boxShadow: '0 20px 40px rgba(37,211,102,0.4)', textDecoration: 'none' }}
             >
               <FaWhatsapp /> Send me a message
-            </Box>
+            </Link>
           </MotionBox>
         </Container>
       </Box>

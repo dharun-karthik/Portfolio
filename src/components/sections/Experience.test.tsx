@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Provider } from '../ui/provider';
 import { Experience } from './Experience';
-import { experiences } from '../../data';
 
 const renderWithProvider = (component: React.ReactNode) => {
   return render(<Provider>{component}</Provider>);

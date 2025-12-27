@@ -32,7 +32,7 @@ function TypeWriter({ text, delay = 0 }: { text: string; delay?: number }) {
 }
 
 const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } } };
-const itemVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
+const itemVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export function Hero() {
   return (
@@ -79,12 +79,12 @@ export function Hero() {
             {/* CTA Buttons */}
             <MotionBox variants={itemVariants}>
               <HStack gap={4} flexWrap="wrap" justify="center">
-                <Box as="a" href="#contact" onClick={(e: React.MouseEvent) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }} px={6} py={3} bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" borderRadius="full" color="white" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ transform: 'translateY(-3px)', boxShadow: '0 10px 30px rgba(102,126,234,0.4)' }}>
+                <Link href="#contact" onClick={(e: React.MouseEvent) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }} px={6} py={3} bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" borderRadius="full" color="white" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ transform: 'translateY(-3px)', boxShadow: '0 10px 30px rgba(102,126,234,0.4)', textDecoration: 'none' }}>
                   Get in Touch
-                </Box>
-                <Box as="a" href={personalInfo.contact.github} target="_blank" px={6} py={3} border="1px solid" borderColor="gray.600" borderRadius="full" color="gray.300" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ borderColor: 'purple.500', color: 'white' }}>
+                </Link>
+                <Link href={personalInfo.contact.github} target="_blank" px={6} py={3} border="1px solid" borderColor="gray.600" borderRadius="full" color="gray.300" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ borderColor: 'purple.500', color: 'white', textDecoration: 'none' }}>
                   View GitHub
-                </Box>
+                </Link>
               </HStack>
             </MotionBox>
 

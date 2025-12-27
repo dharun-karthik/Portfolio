@@ -51,7 +51,6 @@ describe('Hero Component', () => {
 
   it('should render scroll indicator with correct href', () => {
     renderWithProvider(<Hero />);
-    const scrollIndicator = screen.getByRole('link', { name: '' });
     // Find the link that points to #experience (scroll indicator)
     const experienceLinks = screen.getAllByRole('link').filter(
       link => link.getAttribute('href') === '#experience'
