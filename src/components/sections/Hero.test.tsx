@@ -48,5 +48,20 @@ describe('Hero Component', () => {
     expect(screen.getByText('Get in Touch')).toBeInTheDocument();
     expect(screen.getByText('View GitHub')).toBeInTheDocument();
   });
+
+  it('should render scroll indicator with correct href', () => {
+    renderWithProvider(<Hero />);
+    const scrollIndicator = screen.getByRole('link', { name: '' });
+    // Find the link that points to #experience (scroll indicator)
+    const experienceLinks = screen.getAllByRole('link').filter(
+      link => link.getAttribute('href') === '#experience'
+    );
+    expect(experienceLinks.length).toBeGreaterThan(0);
+  });
+
+  it('should render the summary text', () => {
+    renderWithProvider(<Hero />);
+    expect(screen.getByText(personalInfo.summary)).toBeInTheDocument();
+  });
 });
 
