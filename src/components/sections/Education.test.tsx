@@ -11,7 +11,7 @@ const renderWithProvider = (component: React.ReactNode) => {
 describe('Education Component', () => {
   it('should render the education section heading', () => {
     renderWithProvider(<Education />);
-    expect(screen.getByRole('heading', { name: /> education/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Education/ })).toBeInTheDocument();
   });
 
   it('should render the degree information', () => {
@@ -22,7 +22,7 @@ describe('Education Component', () => {
 
   it('should render the certifications section heading', () => {
     renderWithProvider(<Education />);
-    expect(screen.getByRole('heading', { name: /> certifications/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Certifications/ })).toBeInTheDocument();
   });
 
   it('should render all certifications', () => {
@@ -34,7 +34,7 @@ describe('Education Component', () => {
 
   it('should render the achievements section heading', () => {
     renderWithProvider(<Education />);
-    expect(screen.getByRole('heading', { name: /> achievements/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Achievements/ })).toBeInTheDocument();
   });
 
   it('should render all achievements', () => {
