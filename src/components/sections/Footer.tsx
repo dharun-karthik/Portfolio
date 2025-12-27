@@ -1,7 +1,7 @@
 import { Box, Container, Text, HStack, VStack, Heading, Link, SimpleGrid } from '@chakra-ui/react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaPaperPlane } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaWhatsapp } from 'react-icons/fa';
 import { personalInfo } from '../../data';
 
 const MotionBox = motion.create(Box);
@@ -37,9 +37,9 @@ export function Footer() {
 
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mb={12}>
             {[
-              { icon: FaEnvelope, label: 'Email', value: personalInfo.contact.email, href: `mailto:${personalInfo.contact.email}`, color: 'green' },
-              { icon: FaLinkedin, label: 'LinkedIn', value: 'Connect with me', href: personalInfo.contact.linkedin, color: 'blue' },
-              { icon: FaGithub, label: 'GitHub', value: 'View my code', href: personalInfo.contact.github, color: 'purple' },
+              { icon: FaEnvelope, label: 'Email', value: personalInfo.contact.email, href: `mailto:${personalInfo.contact.email}`, color: 'blue' },
+              { icon: FaLinkedin, label: 'LinkedIn', value: 'Connect with me', href: personalInfo.contact.linkedin, color: 'purple' },
+              { icon: FaGithub, label: 'GitHub', value: 'View my code', href: personalInfo.contact.github, color: 'gray' },
             ].map((item, index) => (
               <MotionBox
                 key={item.label}
@@ -79,22 +79,23 @@ export function Footer() {
           >
             <Box
               as="a"
-              href={`mailto:${personalInfo.contact.email}`}
+              href={`https://wa.me/${personalInfo.contact.whatsapp}`}
+              target="_blank"
               display="inline-flex"
               alignItems="center"
               gap={3}
               px={8}
               py={4}
-              bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+              bg="linear-gradient(135deg, #25D366 0%, #128C7E 100%)"
               borderRadius="full"
               color="white"
               fontWeight="semibold"
               fontSize="lg"
               cursor="pointer"
               transition="all 0.3s"
-              _hover={{ transform: 'translateY(-3px)', boxShadow: '0 20px 40px rgba(102,126,234,0.4)' }}
+              _hover={{ transform: 'translateY(-3px)', boxShadow: '0 20px 40px rgba(37,211,102,0.4)' }}
             >
-              <FaPaperPlane /> Send me a message
+              <FaWhatsapp /> Send me a message
             </Box>
           </MotionBox>
         </Container>
