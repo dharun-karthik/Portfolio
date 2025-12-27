@@ -14,21 +14,26 @@ describe('Hero Component', () => {
     expect(screen.getByText(personalInfo.name)).toBeInTheDocument();
   });
 
-  it('should render the title badge', () => {
+  it('should render the title', () => {
     renderWithProvider(<Hero />);
-    expect(screen.getByText(/<Software Engineer \/>/)).toBeInTheDocument();
+    expect(screen.getByText(personalInfo.title)).toBeInTheDocument();
+  });
+
+  it('should render available badge', () => {
+    renderWithProvider(<Hero />);
+    expect(screen.getByText('Available for opportunities')).toBeInTheDocument();
   });
 
   it('should render social links', () => {
     renderWithProvider(<Hero />);
-    expect(screen.getByLabelText('GitHub Profile')).toBeInTheDocument();
-    expect(screen.getByLabelText('LinkedIn Profile')).toBeInTheDocument();
+    expect(screen.getByLabelText('GitHub')).toBeInTheDocument();
+    expect(screen.getByLabelText('LinkedIn')).toBeInTheDocument();
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
   });
 
   it('should have correct GitHub link', () => {
     renderWithProvider(<Hero />);
-    const githubLink = screen.getByLabelText('GitHub Profile');
+    const githubLink = screen.getByLabelText('GitHub');
     expect(githubLink).toHaveAttribute('href', personalInfo.contact.github);
   });
 
@@ -36,6 +41,12 @@ describe('Hero Component', () => {
     renderWithProvider(<Hero />);
     const emailLink = screen.getByLabelText('Email');
     expect(emailLink).toHaveAttribute('href', `mailto:${personalInfo.contact.email}`);
+  });
+
+  it('should render CTA buttons', () => {
+    renderWithProvider(<Hero />);
+    expect(screen.getByText('Get in Touch')).toBeInTheDocument();
+    expect(screen.getByText('View GitHub')).toBeInTheDocument();
   });
 });
 
