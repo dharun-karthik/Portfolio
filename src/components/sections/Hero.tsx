@@ -79,7 +79,7 @@ export function Hero() {
             {/* CTA Buttons */}
             <MotionBox variants={itemVariants}>
               <HStack gap={4} flexWrap="wrap" justify="center">
-                <Box as="a" href={`mailto:${personalInfo.contact.email}`} px={6} py={3} bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" borderRadius="full" color="white" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ transform: 'translateY(-3px)', boxShadow: '0 10px 30px rgba(102,126,234,0.4)' }}>
+                <Box as="a" href="#contact" onClick={(e: React.MouseEvent) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }} px={6} py={3} bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" borderRadius="full" color="white" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ transform: 'translateY(-3px)', boxShadow: '0 10px 30px rgba(102,126,234,0.4)' }}>
                   Get in Touch
                 </Box>
                 <Box as="a" href={personalInfo.contact.github} target="_blank" px={6} py={3} border="1px solid" borderColor="gray.600" borderRadius="full" color="gray.300" fontWeight="semibold" cursor="pointer" transition="all 0.3s" _hover={{ borderColor: 'purple.500', color: 'white' }}>
