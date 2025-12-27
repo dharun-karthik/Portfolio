@@ -136,9 +136,33 @@ export function Education() {
   );
 }
 
-function CertificationCard({ cert, index }: { cert: { name: string; issuer: string; link: string }; index: number }) {
+function CertificationCard({ cert, index }: { cert: { name: string; issuer: string; link?: string }; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const cardContent = (
+    <Box
+      bg="rgba(13, 17, 23, 0.8)"
+      backdropFilter="blur(10px)"
+      p={5}
+      borderRadius="xl"
+      border="1px solid"
+      borderColor="rgba(234, 179, 8, 0.2)"
+      _hover={cert.link ? { borderColor: 'yellow.500', transform: 'translateY(-4px)', boxShadow: '0 10px 40px rgba(234,179,8,0.1)', cursor: 'pointer' } : {}}
+      transition="all 0.3s ease"
+      h="full"
+    >
+      <HStack justify="space-between" mb={2}>
+        <Text fontWeight="semibold" color="white" fontSize="sm">
+          {cert.name}
+        </Text>
+        {cert.link && <FaExternalLinkAlt color="var(--chakra-colors-yellow-500)" size={12} />}
+      </HStack>
+      <Text color="gray.400" fontSize="xs">
+        {cert.issuer}
+      </Text>
+    </Box>
+  );
 
   return (
     <MotionBox
@@ -147,34 +171,18 @@ function CertificationCard({ cert, index }: { cert: { name: string; issuer: stri
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Link
-        href={cert.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        _hover={{ textDecoration: 'none' }}
-      >
-        <Box
-          bg="rgba(13, 17, 23, 0.8)"
-          backdropFilter="blur(10px)"
-          p={5}
-          borderRadius="xl"
-          border="1px solid"
-          borderColor="rgba(234, 179, 8, 0.2)"
-          _hover={{ borderColor: 'yellow.500', transform: 'translateY(-4px)', boxShadow: '0 10px 40px rgba(234,179,8,0.1)' }}
-          transition="all 0.3s ease"
-          h="full"
+      {cert.link ? (
+        <Link
+          href={cert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          _hover={{ textDecoration: 'none' }}
         >
-          <HStack justify="space-between" mb={2}>
-            <Text fontWeight="semibold" color="white" fontSize="sm">
-              {cert.name}
-            </Text>
-            <FaExternalLinkAlt color="var(--chakra-colors-yellow-500)" size={12} />
-          </HStack>
-          <Text color="gray.400" fontSize="xs">
-            {cert.issuer}
-          </Text>
-        </Box>
-      </Link>
+          {cardContent}
+        </Link>
+      ) : (
+        cardContent
+      )}
     </MotionBox>
   );
 }
