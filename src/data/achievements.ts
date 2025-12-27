@@ -1,7 +1,7 @@
 export const achievements: string[] = [
-  'Optimized microservices and restructured architecture, reducing system bottlenecks and improving performance.',
-  'Spearheaded CI/CD automation efforts, improving developer velocity and deployment reliability.',
-  'Delivered core product features under tight deadlines, consistently achieving measurable business outcomes.',
-  'Mentored 6 interns, all of whom transitioned to full-time engineering roles.',
+  'Recognized as go-to engineer for complex system design and architecture decisions.',
+  'Received "Star Performer" award for delivering critical platform migration ahead of deadline.',
+  'Selected to lead cross-functional team of 8 engineers for company\'s flagship product launch.',
+  'Consistently rated "Exceeds Expectations" in all performance reviews.',
 ];
 
