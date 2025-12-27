@@ -1,7 +1,7 @@
 import { Box, Container, Text, HStack, VStack, Heading, Link, SimpleGrid } from '@chakra-ui/react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaWhatsapp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaWhatsapp, FaReact } from 'react-icons/fa';
 import { personalInfo } from '../../data';
 
 const MotionBox = motion.create(Box);
@@ -115,7 +115,9 @@ export function Footer() {
             <HStack gap={2} color="gray.500" fontSize="sm">
               <Text>Built with</Text>
               <FaHeart color="var(--chakra-colors-red-400)" />
-              <Text>by {personalInfo.name}</Text>
+              <Text>using</Text>
+              <FaReact color="var(--chakra-colors-cyan-400)" />
+              <Text>React + TypeScript</Text>
             </HStack>
             <Text color="gray.600" fontSize="xs">© {currentYear} All rights reserved</Text>
           </VStack>
