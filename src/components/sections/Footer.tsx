@@ -37,7 +37,7 @@ export function Footer() {
 
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mb={12}>
             {[
-              { icon: FaEnvelope, label: 'Email', value: personalInfo.contact.email, href: `mailto:${personalInfo.contact.email}`, color: 'blue' },
+              { icon: FaEnvelope, label: 'Email', value: 'Send an email', href: `mailto:${personalInfo.contact.email}`, color: 'blue' },
               { icon: FaLinkedin, label: 'LinkedIn', value: 'Connect with me', href: personalInfo.contact.linkedin, color: 'purple' },
               { icon: FaGithub, label: 'GitHub', value: 'View my code', href: personalInfo.contact.github, color: 'gray' },
             ].map((item, index) => (
@@ -46,8 +46,9 @@ export function Footer() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                h="full"
               >
-                <Link href={item.href} target={item.href.startsWith('mailto') ? undefined : '_blank'} _hover={{ textDecoration: 'none' }}>
+                <Link href={item.href} target={item.href.startsWith('mailto') ? undefined : '_blank'} _hover={{ textDecoration: 'none' }} display="block" h="full">
                   <Box
                     p={6}
                     bg="rgba(13, 17, 23, 0.6)"
@@ -58,8 +59,13 @@ export function Footer() {
                     textAlign="center"
                     _hover={{ borderColor: `${item.color}.500`, transform: 'translateY(-5px)' }}
                     transition="all 0.3s ease"
+                    h="full"
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
                   >
-                    <Box mx="auto" mb={4} p={3} bg={`${item.color}.500`} borderRadius="xl" color="white" w="fit-content">
+                    <Box mb={4} p={3} bg={`${item.color}.500`} borderRadius="xl" color="white">
                       <item.icon size={24} />
                     </Box>
                     <Text color="white" fontWeight="semibold" mb={1}>{item.label}</Text>
