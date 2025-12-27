@@ -1,5 +1,6 @@
 import { Box, HStack, Link, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { FaTerminal } from 'react-icons/fa';
 import { personalInfo } from '../../data';
 
@@ -14,6 +15,27 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const [activeSection, setActiveSection] = useState<string>('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href.substring(1));
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          return;
+        }
+      }
+      setActiveSection('');
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -61,27 +83,31 @@ export function Navbar() {
 
           {/* Nav Links - Desktop */}
           <HStack gap={2} display={{ base: 'none', md: 'flex' }}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                color="gray.400"
-                fontSize="sm"
-                fontWeight="medium"
-                px={3}
-                py={1.5}
-                borderRadius="full"
-                _hover={{
-                  color: 'white',
-                  bg: 'rgba(102, 126, 234, 0.15)',
-                  textDecoration: 'none',
-                }}
-                transition="all 0.2s ease"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  color={isActive ? 'white' : 'gray.400'}
+                  fontSize="sm"
+                  fontWeight="medium"
+                  px={3}
+                  py={1.5}
+                  borderRadius="full"
+                  bg={isActive ? 'rgba(102, 126, 234, 0.3)' : 'transparent'}
+                  _hover={{
+                    color: 'white',
+                    bg: isActive ? 'rgba(102, 126, 234, 0.3)' : 'rgba(102, 126, 234, 0.15)',
+                    textDecoration: 'none',
+                  }}
+                  transition="all 0.2s ease"
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </HStack>
 
           {/* CTA Button */}
