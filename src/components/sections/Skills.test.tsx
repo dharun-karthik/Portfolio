@@ -11,7 +11,7 @@ const renderWithProvider = (component: React.ReactNode) => {
 describe('Skills Component', () => {
   it('should render the section heading', () => {
     renderWithProvider(<Skills />);
-    expect(screen.getByRole('heading', { name: /> skills/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Skills & Expertise/ })).toBeInTheDocument();
   });
 
   it('should render all skill categories', () => {
