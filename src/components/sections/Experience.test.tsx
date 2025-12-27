@@ -11,7 +11,12 @@ const renderWithProvider = (component: React.ReactNode) => {
 describe('Experience Component', () => {
   it('should render the section heading', () => {
     renderWithProvider(<Experience />);
-    expect(screen.getByText(/experience/)).toBeInTheDocument();
+    expect(screen.getByText('Work Experience')).toBeInTheDocument();
+  });
+
+  it('should render career journey label', () => {
+    renderWithProvider(<Experience />);
+    expect(screen.getByText('Career Journey')).toBeInTheDocument();
   });
 
   it('should render all experience entries', () => {
