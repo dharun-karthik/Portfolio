@@ -33,11 +33,11 @@ describe('Navbar Component', () => {
     expect(screen.getByText('Contact')).toBeInTheDocument();
   });
 
-  it('should render Hire Me button with correct email link', () => {
+  it('should render Hire Me button with correct contact link', () => {
     renderWithProvider(<Navbar />);
     const hireButton = screen.getByText('Hire Me');
     expect(hireButton).toBeInTheDocument();
-    expect(hireButton).toHaveAttribute('href', `mailto:${personalInfo.contact.email}`);
+    expect(hireButton).toHaveAttribute('href', '#contact');
   });
 
   it('should have correct href for nav links', () => {

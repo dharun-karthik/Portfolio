@@ -131,7 +131,8 @@ export function Navbar() {
 
           {/* CTA Button */}
           <Link
-            href={`mailto:${personalInfo.contact.email}`}
+            href="#contact"
+            onClick={(e: React.MouseEvent) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
             px={5}
             py={2}
             bg="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
